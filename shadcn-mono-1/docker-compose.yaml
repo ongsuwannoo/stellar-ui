@@ -7,4 +7,14 @@ services:
       - "3000:3000"
     volumes:
       - .:/app
-    command: sh -c "pnpm install && pnpm run dev"
+    command: sh -c "pnpm install && pnpm dev"
+
+  storybook:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dev
+    ports:
+      - "6006:6006"
+    volumes:
+      - .:/app
+    command: sh -c "pnpm install && pnpm storybook --ci"
