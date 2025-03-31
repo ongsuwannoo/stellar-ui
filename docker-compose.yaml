@@ -1,22 +1,22 @@
 services:
-  app:
+  shadcn-mono-1-app:
     build:
-      context: .
+      context: ./shadcn-mono-1
       dockerfile: docker/Dockerfile.dev
     ports:
       - "3000:3000"
     volumes:
-      - .:/app
+      - ./shadcn-mono-1:/app
       - /app/node_modules
     command: sh -c "pnpm install && pnpm dev"
 
-  storybook:
+  shadcn-mono-1-storybook:
     build:
-      context: .
+      context: ./shadcn-mono-1
       dockerfile: docker/Dockerfile.dev
     ports:
       - "6006:6006"
     volumes:
-      - .:/app
+      - ./shadcn-mono-1:/app
       - /app/node_modules
     command: sh -c "pnpm install && pnpm storybook --ci"
